@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 30% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 28% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 28% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 217 70% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 0 0% 92%;
+
+    --muted: 220 18% 14%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 217 60% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 217 70% 45%;
+
+    --radius: 0.5rem;
+
+    --midnight: 220 40% 8%;
+    --midnight-light: 220 30% 14%;
+    --platinum: 220 10% 85%;
+    --platinum-dark: 220 8% 65%;
+    --gold: 40 70% 55%;
+    --gold-foreground: 220 40% 8%;
+    --success: 160 60% 45%;
+    --cyan: 190 80% 50%;
+
+    --sidebar-background: 220 30% 6%;
+    --sidebar-foreground: 0 0% 92%;
+    --sidebar-primary: 217 70% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 16%;
+    --sidebar-accent-foreground: 0 0% 92%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 217 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+  }
+
+  p, span, li, a {
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-xl;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-cyan;
+  }
+
+  .gradient-border {
+    @apply border border-transparent;
+    background: linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+                linear-gradient(135deg, hsl(var(--accent)), hsl(var(--cyan))) border-box;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 px-4 md:px-8;
+  }
+
+  .magnetic-hover {
+    @apply transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-2xl;
+  }
+
+  .glow {
+    box-shadow: 0 0 40px -10px hsl(var(--accent) / 0.3);
+  }
+
+  .glow-strong {
+    box-shadow: 0 0 80px -20px hsl(var(--accent) / 0.4);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Globe animation */
+.globe-grid {
+  background: 
+    radial-gradient(circle at 50% 50%, transparent 40%, hsl(var(--accent) / 0.1) 41%, hsl(var(--accent) / 0.1) 42%, transparent 43%),
+    linear-gradient(0deg, transparent 49%, hsl(var(--accent) / 0.15) 50%, transparent 51%),
+    linear-gradient(90deg, transparent 49%, hsl(var(--accent) / 0.15) 50%, transparent 51%);
+  background-size: 100% 100%, 100% 20%, 20% 100%;
+  border-radius: 50%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--midnight));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent) / 0.3);
+  border-radius: 3px;
+}
